@@ -7,18 +7,28 @@ import {
     FlatList,
 } from 'native-base';
 import { listNews } from '../../src/components/Firebase'
-import NewScreen from '../NewScreen'
-
+import FavNewScreen from '../FavNewScreen'
 
 
 const FavoriteScreen = () => {
 
     const [newsData, setNewsData] = useState([])
 
+
+
     useEffect(() => {
         listNews()
             .then(data => {
-                console.log("_LIST FAVORITES_", data)
+                setNewsData(data)
+            })
+            .catch(e => {
+                alert(e)
+            })
+    }, [newsData])
+
+    useEffect(() => {
+        listNews()
+            .then(data => {
                 setNewsData(data)
             })
             .catch(e => {
@@ -32,7 +42,7 @@ const FavoriteScreen = () => {
                 <Box>
                     <FlatList
                         data={newsData}
-                        renderItem={NewScreen}
+                        renderItem={FavNewScreen}
                     />
                 </Box>
             </Center>

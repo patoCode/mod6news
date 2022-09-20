@@ -20,7 +20,7 @@ function LogoApp() {
 const StackScreen = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Login"
             screenOptions={
                 {
                     headerStyle: {

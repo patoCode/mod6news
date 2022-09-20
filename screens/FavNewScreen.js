@@ -14,36 +14,25 @@ import { saveNews } from '../src/components/Firebase';
 import moment from 'moment'
 
 
-const NewScreen = ({ item }) => {
+const FavNewScreen = ({ item }) => {
+    const fbItem = item._data
 
-    favorite = (item) => () => {
-        saveNews(item.item)
-            .then(data => {
-            })
-            .catch(e => { alert(e) })
-    }
-
+    console.log(fbItem)
 
     return (
         <Box borderBottomWidth="1" py="2" pl={["0", "4"]} pr={["0", "5"]}>
             <HStack space={[2, 3]} justifyContent="space-between">
                 <Avatar
                     size='48px'
-                    source={{ uri: item.urlToImage }}
+                    source={{ uri: fbItem.urlToImage }}
                 ></Avatar>
                 <VStack>
-                    <Text bold>{item.title}</Text>
-                    <Text>{item.description}</Text>
-
-                    <Button
-                        style={{ width: '100px' }}
-                        title='FAVORITE'
-                        onPress={this.favorite({ item })}
-                    />
+                    <Text bold>{fbItem.title}</Text>
+                    <Text>{fbItem.description}</Text>
                 </VStack>
                 <Spacer />
                 <Text fontSize="xs" alignSelf="flex-start">
-                    {moment(item.publishedAt).format('LLLL')}
+                    {moment(fbItem.publishedAt).format('LLLL')}
                 </Text>
 
             </HStack>
@@ -51,4 +40,4 @@ const NewScreen = ({ item }) => {
     )
 }
 
-export default NewScreen
+export default FavNewScreen
