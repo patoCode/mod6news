@@ -18,6 +18,7 @@ const FavoriteScreen = () => {
     useEffect(() => {
         listNews()
             .then(data => {
+                console.log("_LIST FAVORITES_", data)
                 setNewsData(data)
             })
             .catch(e => {

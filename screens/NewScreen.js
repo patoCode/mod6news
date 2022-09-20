@@ -8,13 +8,20 @@ import {
     VStack,
     Spacer,
 } from 'native-base';
+
+import { saveNews } from '../src/components/Firebase';
+
 import moment from 'moment'
 
 
 const NewScreen = ({ item }) => {
 
     favorite = (item) => () => {
-        console.log("_ITEM_", item)
+        saveNews(item.item)
+            .then(data => {
+                console.log("_SAVE IS_ ", data)
+            })
+            .catch(e => { alert(e) })
     }
 
 
@@ -31,7 +38,7 @@ const NewScreen = ({ item }) => {
 
                     <Button
                         style={{ width: '100px' }}
-                        title='ADD'
+                        title='FAVORITE'
                         onPress={this.favorite({ item })}
                     />
                 </VStack>

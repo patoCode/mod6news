@@ -7,21 +7,15 @@ export async function LogEvent(msg) {
 }
 
 export async function saveNews(news) {
-
+    console.log("_FBSAVE_ ", news)
+    const fbDoc = await firestore().collection(collectionNews).add(news)
+    return fbDoc
 }
 
 export async function listNews() {
     const res = []
     let count = 0
     const fbDocs = await firestore().collection(collectionNews).get()
-    fbDocs._docs.forEach(element => {
-        res.push({
-            id: count,
-            title: element._data.title,
-            urlToImage: ''
-        })
-        count++
-    })
-    console.log(res)
-    return res
+    console.log("_LIST FAV_ ", fbDocs._docs)
+    return fbDocs._docs
 } 
