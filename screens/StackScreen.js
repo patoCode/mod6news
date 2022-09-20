@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import HomeScreen from "./HomeScreen"
 import LoginScreen from "./Login"
+import SplashScreen from "./SplashScreen"
 
 
 const Stack = createNativeStackNavigator()
@@ -12,7 +13,7 @@ function LogoApp() {
     return (
         <Image
             style={{ width: 50, height: 50 }}
-            source={require('../assets/logo.png')}
+            source={require('../assets/news_logo.png')}
         />
     )
 }
@@ -20,7 +21,7 @@ function LogoApp() {
 const StackScreen = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName="Splash"
             screenOptions={
                 {
                     headerStyle: {
@@ -33,6 +34,11 @@ const StackScreen = () => {
                 }
             }
         >
+            <Stack.Screen
+                name="Splash"
+                component={SplashScreen}
+                options={{ headerShown: false }}
+            />
             <Stack.Screen
                 name="Home"
                 component={HomeScreen}

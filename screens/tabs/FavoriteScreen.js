@@ -14,18 +14,6 @@ const FavoriteScreen = () => {
 
     const [newsData, setNewsData] = useState([])
 
-
-
-    useEffect(() => {
-        listNews()
-            .then(data => {
-                setNewsData(data)
-            })
-            .catch(e => {
-                alert(e)
-            })
-    }, [newsData])
-
     useEffect(() => {
         listNews()
             .then(data => {
