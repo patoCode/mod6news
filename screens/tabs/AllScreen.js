@@ -6,13 +6,14 @@ import {
     NativeBaseProvider,
     Box,
     Center,
+    Heading,
     FlatList,
 } from 'native-base';
 
 import NewScreen from '../NewScreen';
 
-
 const AllScreen = () => {
+    let screenTitle = 'All News'
     const [newsData, setNewsData] = useState([])
     useEffect(() => {
         services('general')
@@ -26,14 +27,15 @@ const AllScreen = () => {
 
     return (
         <NativeBaseProvider>
-            <Center flex={1} px="3">
-                <Box>
-                    <FlatList
-                        data={newsData}
-                        renderItem={NewScreen}
-                    />
-                </Box>
+            <Center>
+                <Heading fontSize="xl" p="4" pb="2">
+                    {screenTitle}
+                </Heading>
             </Center>
+            <FlatList
+                data={newsData}
+                renderItem={NewScreen}
+            />
         </NativeBaseProvider >)
 }
 

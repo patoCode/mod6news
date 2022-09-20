@@ -13,12 +13,13 @@ import { useTheme } from '@react-navigation/native';
 import * as Animatable from 'react-native-animatable';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import { appColors } from '../src/config/constants';
 
 function SplashScreen({ navigation }) {
     const { colors } = useTheme();
     return (
         <View style={styles.container}>
-            <StatusBar backgroundColor='#009387' barStyle="light-content" />
+            <StatusBar backgroundColor={appColors.primary} barStyle="light-content" />
             <View style={styles.header}>
                 <Animatable.Image
                     animation="bounceIn"
@@ -30,18 +31,18 @@ function SplashScreen({ navigation }) {
             </View>
             <Animatable.View
                 style={[styles.footer, {
-                    backgroundColor: colors.background
+                    backgroundColor: appColors.text_white
                 }]}
                 animation="fadeInUpBig"
             >
                 <Text style={[styles.title, {
                     color: colors.text
-                }]}>Stay connected with everyone!</Text>
+                }]}>Stay informed with everyone!</Text>
                 <Text style={styles.text}>Sign in with account</Text>
                 <View style={styles.button}>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                         <LinearGradient
-                            colors={['#08d4c4', '#01ab9d']}
+                            colors={[appColors.top_g, appColors.bottom_g]}
                             style={styles.signIn}
                         >
                             <Text style={styles.textSign}>Get Started</Text>
@@ -63,7 +64,7 @@ const height_logo = height * 0.1;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        backgroundColor: '#10B670'
     },
     header: {
         flex: 2,

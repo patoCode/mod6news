@@ -1,11 +1,12 @@
 import React from "react"
 import { Image } from "react-native"
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { createNativeStackNavigator, TransitionPresets } from '@react-navigation/native-stack'
+
 
 import HomeScreen from "./HomeScreen"
 import LoginScreen from "./Login"
 import SplashScreen from "./SplashScreen"
-
+import { appColors } from '../src/config/constants'
 
 const Stack = createNativeStackNavigator()
 
@@ -21,28 +22,32 @@ function LogoApp() {
 const StackScreen = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Splash"
+            initialRouteName="Home"
             screenOptions={
                 {
-                    headerStyle: {
-                        backgroundColor: "#565B8C",
-                    },
-                    headerTintColor: '#fff',
+                    headerMode: 'screen',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                     },
+                    headerStyle: {
+                        backgroundColor: appColors.primary,
+                    }
                 }
             }
         >
             <Stack.Screen
                 name="Splash"
                 component={SplashScreen}
-                options={{ headerShown: false }}
+                options={{
+                    headerShown: false,
+                    title: '',
+
+                }}
             />
             <Stack.Screen
                 name="Home"
                 component={HomeScreen}
-                options={{ headerShown: false }}
+                options={{ headerShown: false, }}
             />
             <Stack.Screen
                 name="Login"

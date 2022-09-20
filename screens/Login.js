@@ -6,18 +6,21 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 
+
+import { appColors } from '../src/config/constants'
+
 function Login({ navigation }) {
     const { colors } = useTheme();
     return (
         <View style={styles.container} >
-            <StatusBar backgroundColor='#009387' barStyle="light-content" />
+            <StatusBar backgroundColor={appColors.secondary} barStyle="light-content" />
             <View style={styles.header}>
                 <Text style={styles.text_header}>Welcome!</Text>
             </View>
             <Animatable.View
                 animation="fadeInUpBig"
                 style={[styles.footer, {
-                    backgroundColor: colors.background
+                    backgroundColor: appColors.text_white
                 }]}
             >
                 <Text style={[styles.text_footer, {
@@ -37,22 +40,19 @@ function Login({ navigation }) {
                         }]}
                         autoCapitalize="none"
                     />
-                    <Animatable.View
-                        animation="bounceIn"
-                    >
-                        <Feather
-                            name="check-circle"
-                            color="green"
-                            size={20}
-                        />
-                    </Animatable.View>
                 </View>
                 <Text style={[styles.text_footer, {
                     color: colors.text,
                     marginTop: 35
                 }]}>Password</Text>
                 <View style={styles.action}>
+                    <Feather
+                        name="lock"
+                        color={colors.text}
+                        size={20}
+                    />
                     <TextInput
+                        variant="outline"
                         placeholder="Your Password"
                         placeholderTextColor="#666666"
                         style={[styles.textInput, {
@@ -61,7 +61,7 @@ function Login({ navigation }) {
                     />
                 </View>
                 <TouchableOpacity>
-                    <Text style={{ color: '#009387', marginTop: 15 }}>Forgot password?</Text>
+                    <Text style={{ color: appColors.text_blod, marginTop: 15 }}>Forgot password?</Text>
                 </TouchableOpacity>
 
 
@@ -71,11 +71,11 @@ function Login({ navigation }) {
                         onPress={() => { navigation.navigate('Home') }}
                     >
                         <LinearGradient
-                            colors={['#08d4c4', '#01ab9d']}
+                            colors={[appColors.top_g, appColors.bottom_g]}
                             style={styles.signIn}
                         >
                             <Text style={[styles.textSign, {
-                                color: '#fff'
+                                color: appColors.text_white
                             }]}>Sign In</Text>
                         </LinearGradient>
                     </TouchableOpacity>
@@ -89,7 +89,7 @@ function Login({ navigation }) {
                         }]}
                     >
                         <Text style={[styles.textSign, {
-                            color: '#009387'
+                            color: appColors.top_g
                         }]}>Sign Up</Text>
                     </TouchableOpacity>
                 </View>
@@ -101,7 +101,7 @@ function Login({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        backgroundColor: appColors.primary
     },
     header: {
         flex: 1,
