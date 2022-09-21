@@ -5,33 +5,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Login from './screens/Login';
 import StackScreen from './screens/StackScreen';
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate('Login')}
-      />
-      <Button
-        title="Go back to first screen in stack"
-        onPress={() => navigation.popToTop()} />
-    </View>
-  );
-}
-function DetailsScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
+import { navigationRef } from './src/components/RootNavigation';
 
 function App() {
   return (
-
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef}>
       <StackScreen />
     </NavigationContainer>
   );

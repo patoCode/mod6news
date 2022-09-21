@@ -2,22 +2,14 @@ import React from "react"
 import { Image } from "react-native"
 import { createNativeStackNavigator, TransitionPresets } from '@react-navigation/native-stack'
 
-
 import HomeScreen from "./HomeScreen"
 import LoginScreen from "./Login"
 import SplashScreen from "./SplashScreen"
 import { appColors } from '../src/config/constants'
+import Detail from "./Detail"
+
 
 const Stack = createNativeStackNavigator()
-
-function LogoApp() {
-    return (
-        <Image
-            style={{ width: 50, height: 50 }}
-            source={require('../assets/news_logo.png')}
-        />
-    )
-}
 
 const StackScreen = () => {
     return (
@@ -50,12 +42,16 @@ const StackScreen = () => {
                 options={{ headerShown: false, }}
             />
             <Stack.Screen
+                name="Detail"
+                component={Detail}
+                options={{}}
+            />
+            <Stack.Screen
                 name="Login"
                 component={LoginScreen}
                 options={{ headerShown: false }}
             />
         </Stack.Navigator >
-
     )
 }
 

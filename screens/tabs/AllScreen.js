@@ -12,6 +12,7 @@ import {
 
 import NewScreen from '../NewScreen';
 
+
 const AllScreen = () => {
     let screenTitle = 'All News'
     const [newsData, setNewsData] = useState([])
