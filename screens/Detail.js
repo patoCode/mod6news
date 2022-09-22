@@ -6,18 +6,14 @@ import {
     Image,
     Center,
     Stack,
-    Heading, Text, VStack, HStack, IconButton, ScrollView
+    Heading, Text, HStack, IconButton, ScrollView
 } from 'native-base'
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { appColors } from '../src/config/constants'
 import moment from 'moment'
 
 const Detail = ({ navigation, route }) => {
-
     const item = route.params.item
-
-
-
     return (
         <NativeBaseProvider>
             <ScrollView>
@@ -79,7 +75,6 @@ const Detail = ({ navigation, route }) => {
                                     as: FontAwesome,
                                     name: "heart-o"
                                 }}
-                                onPress={this.favorite({ item })}
                             />
                         </HStack>
 

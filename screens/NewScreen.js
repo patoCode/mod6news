@@ -9,35 +9,23 @@ import {
     VStack,
     Spacer,
     Heading,
-    IconButton,
     AspectRatio,
-    Center
 } from 'native-base';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { saveNews } from '../src/components/Firebase';
-import { appColors, appDimensions } from '../src/config/constants';
+
+import { appColors } from '../src/config/constants';
 import * as RootNavigation from './../src/components/RootNavigation';
 
 import moment from 'moment'
 
+import BtnRead from './btn/BtnRead';
+import BtnShare from './btn/BtnShare';
+import BtnFavorite from './btn/BtnFavorite';
+
+
 const NewScreen = ({ item }) => {
+    let author = ''
+    author = item.source.id
 
-    favorite = (item) => () => {
-        saveNews(item.item)
-            .then(data => {
-            })
-            .catch(e => { alert(e) })
-    }
-
-    const handleDetail = () => {
-        RootNavigation.navigate('Detail', { item })
-    }
-    /*<PostTime>{moment(item.postTime.toDate()).fromNow()}</PostTime> */
-
-    console.log("_ITEM_ ", item)
-    const author = item.source.id
-
-    console.log("_AUTHOR_ ", author)
     if (author === '' || author === 'anónimo' || author !== null)
         author = 'AN'
 
@@ -76,29 +64,9 @@ const NewScreen = ({ item }) => {
                 </AspectRatio>
 
                 <HStack space={2} mt='1'>
-                    <IconButton
-                        onPress={handleDetail}
-                        variant='solid'
-                        _icon={{
-                            as: FontAwesome,
-                            name: "book"
-                        }} />
-
-                    <IconButton
-                        variant='solid'
-                        colorScheme="indigo"
-                        _icon={{
-                            as: FontAwesome,
-                            name: "share-alt"
-                        }} />
-                    <IconButton
-                        variant='outline'
-                        _icon={{
-                            as: FontAwesome,
-                            name: "heart-o"
-                        }}
-                        onPress={this.favorite({ item })}
-                    />
+                    <BtnRead item={item} fb="false" />
+                    <BtnShare />
+                    <BtnFavorite item={item} />
                 </HStack>
 
 

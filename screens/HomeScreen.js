@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
@@ -8,19 +8,38 @@ import SportScreen from './tabs/SportScreen';
 import EsportScreen from './tabs/EsportScreen';
 import FavoriteScreen from './tabs/FavoriteScreen';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import LinearGradient from 'react-native-linear-gradient';
+import { getUnread } from '../src/components/Firebase';
+
 
 // const Tab = createBottomTabNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
+
+    const [unread, setUnreadCount] = useState(null)
+
+    useEffect(() => {
+        handleUnread()
+    }, [unread])
+
+    handleUnread = () => {
+        getUnread()
+            .then(data => {
+                data == 0 ? setUnreadCount(null) : setUnreadCount(data)
+            })
+            .catch(e => {
+                alert(e)
+            })
+    }
+
     return (
         <Tab.Navigator
-            initialRouteName='All'
+            initialRouteName='Favorite'
             barStyle={{ backgroundColor: appColors.primary }}
             screenOptions={() => ({
                 tabBarLabel: 'HELO'
             })}
+            onPress={handleUnread}
         >
             <Tab.Screen
                 name="All"
@@ -28,7 +47,7 @@ function HomeScreen() {
                 options={{
                     tabBarLabel: 'All',
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name="home" color={color} size={22} />
+                        <FontAwesome name="globe" color={color} size={22} />
                     ),
                 }}
             />
@@ -43,13 +62,13 @@ function HomeScreen() {
                 }}
             />
             <Tab.Screen
-                name="E-Sport"
+                name="Tech"
                 component={EsportScreen}
                 options={{
                     tabBarShowLabel: 'false',
-                    tabBarLabel: 'eSport',
+                    tabBarLabel: 'Technology',
                     tabBarIcon: ({ color }) => (
-                        <FontAwesome name="gamepad" color={color} size={22} />
+                        <FontAwesome name="wpexplorer" color={color} size={22} />
                     ),
                 }}
             />
@@ -61,7 +80,9 @@ function HomeScreen() {
                     tabBarIcon: ({ color }) => (
                         <FontAwesome name="newspaper-o" color={color} size={22} />
                     ),
+                    tabBarBadge: unread
                 }}
+                onPress={handleUnread}
             />
         </Tab.Navigator >
     )

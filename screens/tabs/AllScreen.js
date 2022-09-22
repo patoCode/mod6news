@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { View } from 'react-native'
 import { services } from '../../src/components/Services'
 
 import {
     NativeBaseProvider,
-    Box,
     Center,
     Heading,
     FlatList,
@@ -14,8 +12,9 @@ import NewScreen from '../NewScreen';
 
 
 const AllScreen = () => {
-    let screenTitle = 'All News'
+    let screenTitle = 'GLOBAL NEWS'
     const [newsData, setNewsData] = useState([])
+
     useEffect(() => {
         services('general')
             .then(data => {

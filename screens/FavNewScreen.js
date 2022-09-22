@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, TouchableOpacity } from 'react-native';
 import {
     Box,
@@ -10,16 +10,14 @@ import {
     Heading,
     IconButton
 } from 'native-base';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import moment from 'moment'
 import { appColors, appDimensions } from '../src/config/constants';
+import BtnRead from './btn/BtnRead';
+import BtnCheck from './btn/BtnCheck';
 
 const FavNewScreen = ({ item }) => {
     const fbItem = item._data
-
-
-
     return (
         <Box
             p="6"
@@ -31,6 +29,7 @@ const FavNewScreen = ({ item }) => {
                     size='md'
                     source={{ uri: fbItem.urlToImage }}
                 />
+
                 <VStack>
                     <Heading size='md'>
                         {fbItem.title}
@@ -43,31 +42,10 @@ const FavNewScreen = ({ item }) => {
                         {fbItem.description}
                     </Text>
                     <HStack space={2} mt='10'>
-                        <IconButton
-                            variant='solid'
-                            _icon={{
-                                as: FontAwesome,
-                                name: "book"
-                            }} />
+                        <BtnRead item={fbItem} fb="true" fbDoc={item} />
+                        <BtnCheck item={item} />
 
-                        <IconButton
-                            variant='solid'
-                            colorScheme="indigo"
-                            _icon={{
-                                as: FontAwesome,
-                                name: "share-alt"
-                            }} />
-                        <IconButton
-                            variant='outline'
-                            _icon={{
-                                as: FontAwesome,
-                                name: "heart-o"
-                            }}
-                            onPress={this.favorite({ item })}
-                        />
                     </HStack>
-
-
                 </VStack>
                 <Spacer />
                 <Text fontSize="xs" alignSelf="flex-start">
@@ -77,5 +55,7 @@ const FavNewScreen = ({ item }) => {
         </Box >
     )
 }
+
+
 
 export default FavNewScreen

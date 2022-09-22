@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
 import {
     NativeBaseProvider,
-    Box,
+    Heading,
     Center,
     FlatList,
 } from 'native-base';
@@ -12,6 +11,7 @@ import FavNewScreen from '../FavNewScreen'
 
 const FavoriteScreen = () => {
 
+    const screenTitle = 'FAVORITE'
     const [newsData, setNewsData] = useState([])
 
     useEffect(() => {
@@ -22,18 +22,19 @@ const FavoriteScreen = () => {
             .catch(e => {
                 alert(e)
             })
-    }, [])
+    }, [newsData])
 
     return (
         <NativeBaseProvider>
-            <Center flex={1} px="3">
-                <Box>
-                    <FlatList
-                        data={newsData}
-                        renderItem={FavNewScreen}
-                    />
-                </Box>
+            <Center>
+                <Heading fontSize="xl" p="4" pb="2">
+                    {screenTitle}
+                </Heading>
             </Center>
+            <FlatList
+                data={newsData}
+                renderItem={FavNewScreen}
+            />
         </NativeBaseProvider >
     )
 }
