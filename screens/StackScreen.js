@@ -7,6 +7,7 @@ import LoginScreen from "./Login"
 import SplashScreen from "./SplashScreen"
 import { appColors } from '../src/config/constants'
 import Detail from "./Detail"
+import DetailFav from "./DetailFav"
 
 
 const Stack = createNativeStackNavigator()
@@ -40,6 +41,11 @@ const StackScreen = () => {
                 name="Home"
                 component={HomeScreen}
                 options={{ headerShown: false, }}
+            />
+            <Stack.Screen
+                name="DetailFav"
+                component={DetailFav}
+                options={{}}
             />
             <Stack.Screen
                 name="Detail"

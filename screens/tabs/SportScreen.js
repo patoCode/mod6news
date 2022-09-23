@@ -11,6 +11,7 @@ import {
 } from 'native-base';
 
 import NewScreen from '../NewScreen';
+import Header from '../commons/Header';
 
 
 const SportScreen = () => {
@@ -28,11 +29,7 @@ const SportScreen = () => {
 
     return (
         <NativeBaseProvider>
-            <Center>
-                <Heading fontSize="xl" p="4" pb="2">
-                    {screenTitle}
-                </Heading>
-            </Center>
+            <Header title={screenTitle} />
             <FlatList
                 data={newsData}
                 renderItem={NewScreen}

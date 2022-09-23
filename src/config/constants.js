@@ -10,7 +10,8 @@ export const appColors = {
     app_gray: "#617D8A",
     app_separator: '#B5E6D1',
     accent: '#DC143C',
-    accent_check: '#02ADFB'
+    accent_check: '#02ADFB',
+    app_light_gray: '#ABACB0'
 }
 
 export const appDimensions = {

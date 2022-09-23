@@ -11,10 +11,8 @@ import { appColors } from '../../src/config/constants';
 
 const BtnFavorite = ({ item }) => {
 
-
     favorite = (item) => () => {
-        console.log(item)
-        saveNews(item.item)
+        saveNews(item)
             .then(data => {
                 alert("La noticia fue agregada a favoritos")
             })

@@ -6,9 +6,13 @@ import {
     Center,
     Heading,
     FlatList,
+    View
 } from 'native-base';
 
 import NewScreen from '../NewScreen';
+import { SafeAreaView } from 'react-native';
+import { appColors } from '../../src/config/constants';
+import Header from '../commons/Header';
 
 
 const AllScreen = () => {
@@ -27,15 +31,14 @@ const AllScreen = () => {
 
     return (
         <NativeBaseProvider>
-            <Center>
-                <Heading fontSize="xl" p="4" pb="2">
-                    {screenTitle}
-                </Heading>
-            </Center>
-            <FlatList
-                data={newsData}
-                renderItem={NewScreen}
-            />
+            <View>
+                <Header title={screenTitle} />
+                <FlatList
+                    background="#EFEFF5"
+                    data={newsData}
+                    renderItem={NewScreen}
+                />
+            </View>
         </NativeBaseProvider >)
 }
 

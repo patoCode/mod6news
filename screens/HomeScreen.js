@@ -35,7 +35,7 @@ function HomeScreen({ navigation }) {
 
     return (
         <Tab.Navigator
-            initialRouteName='Favorite'
+            initialRouteName='Tech'
             barStyle={{ backgroundColor: appColors.primary }}
             screenOptions={() => ({
                 tabBarLabel: 'HELO'

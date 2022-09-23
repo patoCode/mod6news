@@ -19,7 +19,6 @@ import { appColors } from '../../src/config/constants';
 import { deleteDoc } from '../../src/components/Firebase';
 
 const BtnCheck = ({ item }) => {
-
     handleDelete = () => {
         deleteDoc(item)
             .then(data => { alert("Eliminacion exitósa") })

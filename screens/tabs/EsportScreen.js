@@ -10,7 +10,9 @@ import {
     Heading,
 } from 'native-base';
 
+
 import NewScreen from '../NewScreen';
+import Header from '../commons/Header';
 
 const Esport = () => {
     let screenTitle = 'TECHNOLOGY'
@@ -27,11 +29,7 @@ const Esport = () => {
 
     return (
         <NativeBaseProvider>
-            <Center>
-                <Heading fontSize="xl" p="4" pb="2">
-                    {screenTitle}
-                </Heading>
-            </Center>
+            <Header title={screenTitle} />
             <FlatList
                 data={newsData}
                 renderItem={NewScreen}

@@ -11,14 +11,15 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { appColors } from '../src/config/constants'
 import moment from 'moment'
-import BtnFavorite from './btn/BtnFavorite';
+import BtnCheck from './btn/BtnCheck';
 import BtnShare from './btn/BtnShare'
 import { createIconSetFromFontello } from 'react-native-vector-icons';
 
-const Detail = ({ navigation, route }) => {
-    const item = route.params.item
 
-    console.log("_ITEM_", item)
+const DetailFav = ({ navigation, route }) => {
+    const item = route.params.item._data
+    console.log("_ITEM_FAV_", item)
+    const fbItem = route.params.item
 
     let fuente = '-UNK-'
     if (typeof (item) != "undefined") {
@@ -75,7 +76,7 @@ const Detail = ({ navigation, route }) => {
                     </Text>
                     <Box p='4'>
                         <HStack space={2} mt='5'>
-                            <BtnFavorite item={item} />
+                            <BtnCheck item={fbItem} />
                             <BtnShare />
                         </HStack>
                     </Box>
@@ -85,4 +86,4 @@ const Detail = ({ navigation, route }) => {
     )
 }
 
-export default Detail
+export default DetailFav

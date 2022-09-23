@@ -11,7 +11,7 @@ import { setRead } from '../../src/components/Firebase';
 const BtnRead = ({ item, fb, fbDoc }) => {
 
     const handleDetail = () => {
-        if (fb) {
+        if (fb == true) {
             setRead(fbDoc.ref).then(data => { }).catch(e => console.log(e))
         }
         RootNavigation.navigate('Detail', { item })
