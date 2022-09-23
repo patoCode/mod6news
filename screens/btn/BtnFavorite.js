@@ -9,10 +9,11 @@ import { saveNews } from '../../src/components/Firebase';
 import { appColors } from '../../src/config/constants';
 
 
-const BtnFavorite = (item) => {
+const BtnFavorite = ({ item }) => {
 
 
     favorite = (item) => () => {
+        console.log(item)
         saveNews(item.item)
             .then(data => {
                 alert("La noticia fue agregada a favoritos")

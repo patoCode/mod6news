@@ -19,6 +19,7 @@ function HomeScreen({ navigation }) {
     const [unread, setUnreadCount] = useState(null)
 
     useEffect(() => {
+        console.log("update")
         handleUnread()
     }, [unread])
 
