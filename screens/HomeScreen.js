@@ -19,7 +19,6 @@ function HomeScreen({ navigation }) {
     const [unread, setUnreadCount] = useState(null)
 
     useEffect(() => {
-        console.log("update")
         handleUnread()
     }, [unread])
 
@@ -35,7 +34,7 @@ function HomeScreen({ navigation }) {
 
     return (
         <Tab.Navigator
-            initialRouteName='Tech'
+            initialRouteName='All'
             barStyle={{ backgroundColor: appColors.primary }}
             screenOptions={() => ({
                 tabBarLabel: 'HELO'

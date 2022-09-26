@@ -10,7 +10,6 @@ import {
     Image,
     Stack
 } from 'native-base';
-
 import moment from 'moment'
 import { appColors, appDimensions } from '../src/config/constants';
 import * as RootNavigation from '../src/components/RootNavigation';
@@ -24,7 +23,7 @@ const FavNewScreen = ({ item }) => {
     const fbItem = item._data
     let fuente = '- UNK -'
 
-    if (typeof (fbItem) != 'undefined' || (fbItem.source != null && fbItem.source.name !== ""))
+    if (typeof (fbItem) != 'undefined' && (fbItem.source != null && fbItem.source.name !== ""))
         fuente = fbItem.source.name
 
 

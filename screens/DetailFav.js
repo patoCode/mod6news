@@ -13,12 +13,12 @@ import { appColors } from '../src/config/constants'
 import moment from 'moment'
 import BtnCheck from './btn/BtnCheck';
 import BtnShare from './btn/BtnShare'
-import { createIconSetFromFontello } from 'react-native-vector-icons';
+import BtnBack from './commons/BtnBack';
+import BtnView from './btn/BtnView';
 
 
 const DetailFav = ({ navigation, route }) => {
     const item = route.params.item._data
-    console.log("_ITEM_FAV_", item)
     const fbItem = route.params.item
 
     let fuente = '-UNK-'
@@ -33,6 +33,7 @@ const DetailFav = ({ navigation, route }) => {
             <ScrollView>
                 <Box alignItems="center" safeArea>
                     <Box>
+                        <BtnBack navigation={navigation} />
                         <AspectRatio w='100%' ratio={16 / 9}>
                             <Image
                                 source={{
@@ -76,8 +77,8 @@ const DetailFav = ({ navigation, route }) => {
                     </Text>
                     <Box p='4'>
                         <HStack space={2} mt='5'>
-                            <BtnCheck item={fbItem} />
-                            <BtnShare />
+                            <BtnCheck item={fbItem} navigation={navigation} />
+                            <BtnView item={item} />
                         </HStack>
                     </Box>
                 </Box>

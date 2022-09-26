@@ -13,7 +13,6 @@ export async function getUnread() {
 
 export async function saveNews(news) {
     news = { ...news.item, 'read': false }
-    console.log("__BEFORE__ ", news)
     const fbDoc = await firestore().collection(collectionNews).add(news)
     return fbDoc
 }
@@ -24,7 +23,6 @@ export async function setRead(doc) {
 }
 
 export async function deleteDoc(doc) {
-    console.log("__FB__ ", doc)
     const readDoc = await firestore().collection(collectionNews).doc(doc.id).delete()
     return readDoc
 }

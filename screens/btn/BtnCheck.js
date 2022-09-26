@@ -18,10 +18,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { appColors } from '../../src/config/constants';
 import { deleteDoc } from '../../src/components/Firebase';
 
-const BtnCheck = ({ item }) => {
+const BtnCheck = ({ item, navigation }) => {
     handleDelete = () => {
         deleteDoc(item)
-            .then(data => { alert("Eliminacion exitósa") })
+            .then(data => {
+                alert("Eliminacion exitósa")
+                navigation.goBack()
+            })
             .catch(e => { console.log(e) })
     }
 

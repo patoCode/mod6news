@@ -6,21 +6,23 @@ import {
     Image,
     Center,
     Stack,
-    Heading, Text, HStack, IconButton, ScrollView
+    Icon,
+    Heading, Text, HStack, ScrollView, Fab
 } from 'native-base'
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { appColors } from '../src/config/constants'
 import moment from 'moment'
 import BtnFavorite from './btn/BtnFavorite';
-import BtnShare from './btn/BtnShare'
-import { createIconSetFromFontello } from 'react-native-vector-icons';
+import BtnView from './btn/BtnView';
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import BtnBack from './commons/BtnBack';
 
 const Detail = ({ navigation, route }) => {
+
     const item = route.params.item
-
-    console.log("_ITEM_", item)
-
+    console.log("_TITLE_ ", route.params.title)
     let fuente = '-UNK-'
+
     if (typeof (item) != "undefined") {
         if (item.source != null && item.source.name != "")
             fuente = item.source.name
@@ -32,6 +34,7 @@ const Detail = ({ navigation, route }) => {
             <ScrollView>
                 <Box alignItems="center" safeArea>
                     <Box>
+                        <BtnBack navigation={navigation} />
                         <AspectRatio w='100%' ratio={16 / 9}>
                             <Image
                                 source={{
@@ -75,8 +78,8 @@ const Detail = ({ navigation, route }) => {
                     </Text>
                     <Box p='4'>
                         <HStack space={2} mt='5'>
-                            <BtnFavorite item={item} />
-                            <BtnShare />
+                            <BtnFavorite item={item} navigation={navigation} />
+                            <BtnView item={item} />
                         </HStack>
                     </Box>
                 </Box>

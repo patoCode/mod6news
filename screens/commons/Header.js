@@ -12,13 +12,7 @@ import { appColors } from '../../src/config/constants';
 const Header = ({ title }) => {
     return (
         <Box
-            bg={{
-                linearGradient: {
-                    colors: [appColors.primary, appColors.secondary],
-                    start: [0, 0],
-                    end: [1, 0]
-                }
-            }}
+            bg={appColors.primary}
             h='50'
         >
             <HStack space={2}>
@@ -34,7 +28,7 @@ const Header = ({ title }) => {
                 <IconButton
                     w='15%'
                     variant='solid'
-                    bgColor={appColors.secondary}
+                    bgColor={appColors.primary}
                     _icon={{
                         as: FontAwesome5,
                         name: "power-off"

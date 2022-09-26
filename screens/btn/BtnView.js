@@ -4,24 +4,21 @@ import {
     IconButton,
 
 } from 'native-base';
+import { appColors } from '../../src/config/constants';
+import { Linking } from 'react-native';
 
 
-const BtnShare = ({ item }) => {
-
-    const handleShare = () => {
-        console.log("SHARE")
-    }
-
+const BtnView = ({ item }) => {
     return (
         <IconButton
-            onPress={handleShare}
+            onPress={() => Linking.openURL(item.url)}
             variant='solid'
-            colorScheme="indigo"
+            background={appColors.primary}
             _icon={{
                 as: FontAwesome5,
-                name: "share-alt"
+                name: "globe"
             }} />
     )
 }
 
-export default BtnShare
+export default BtnView

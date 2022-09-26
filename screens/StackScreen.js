@@ -8,6 +8,7 @@ import SplashScreen from "./SplashScreen"
 import { appColors } from '../src/config/constants'
 import Detail from "./Detail"
 import DetailFav from "./DetailFav"
+import FavoriteScreen from "./tabs/FavoriteScreen"
 
 
 const Stack = createNativeStackNavigator()
@@ -15,7 +16,7 @@ const Stack = createNativeStackNavigator()
 const StackScreen = () => {
     return (
         <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName="Splash"
             screenOptions={
                 {
                     headerMode: 'screen',
@@ -38,6 +39,11 @@ const StackScreen = () => {
                 }}
             />
             <Stack.Screen
+                name="Favorite"
+                component={FavoriteScreen}
+                options={{ headerShown: false, }}
+            />
+            <Stack.Screen
                 name="Home"
                 component={HomeScreen}
                 options={{ headerShown: false, }}
@@ -45,12 +51,12 @@ const StackScreen = () => {
             <Stack.Screen
                 name="DetailFav"
                 component={DetailFav}
-                options={{}}
+                options={{ headerShown: false, }}
             />
             <Stack.Screen
                 name="Detail"
                 component={Detail}
-                options={{}}
+                options={{ headerShown: false, }}
             />
             <Stack.Screen
                 name="Login"

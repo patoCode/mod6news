@@ -36,6 +36,7 @@ const AllScreen = () => {
                 <FlatList
                     background="#EFEFF5"
                     data={newsData}
+                    keyExtractor={item => item.title}
                     renderItem={NewScreen}
                 />
             </View>

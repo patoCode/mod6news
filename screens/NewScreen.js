@@ -26,7 +26,7 @@ const NewScreen = ({ item }) => {
 
 
     const handleDetail = () => {
-        RootNavigation.navigate('Detail', { item })
+        RootNavigation.navigate('Detail', { item, title: item.title })
     }
 
 
@@ -54,7 +54,7 @@ const NewScreen = ({ item }) => {
                             <Heading
                                 size='sm'
                                 opacity='70'
-                                bg='#000'
+                                bg={appColors.secondary}
                                 mt='-50'
                                 color='#fff'
                                 p='3'

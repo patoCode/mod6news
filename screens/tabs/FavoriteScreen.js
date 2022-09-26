@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import {
     NativeBaseProvider,
+    Text,
+    FlatList,
     Heading,
     Center,
-    FlatList,
 } from 'native-base';
 import { listNews } from '../../src/components/Firebase'
 import FavNewScreen from '../FavNewScreen'
+import Header from '../commons/Header';
 
 
 const FavoriteScreen = () => {
@@ -26,15 +28,18 @@ const FavoriteScreen = () => {
 
     return (
         <NativeBaseProvider>
-            <Center>
-                <Heading fontSize="xl" p="4" pb="2">
-                    {screenTitle}
-                </Heading>
-            </Center>
-            <FlatList
-                data={newsData}
-                renderItem={FavNewScreen}
-            />
+            <Header title={screenTitle} />
+            {newsData.length > 0 ? (
+                <FlatList
+                    data={newsData}
+                    renderItem={FavNewScreen}
+                />
+            ) : (
+                <Center>
+                    <Heading bold>No se registraron noticias en tus favoritos :(</Heading>
+                </Center>
+            )}
+
         </NativeBaseProvider >
     )
 }
